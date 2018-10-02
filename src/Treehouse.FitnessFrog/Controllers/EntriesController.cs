@@ -54,7 +54,7 @@ namespace Treehouse.FitnessFrog.Controllers
             if (ModelState.IsValid)
             {
                 _entriesRepository.AddEntry(entry);
-                //TODO Display the Entries list page
+                //Avoid duplicate submitions by redirect to Index Action  Post-Redirect-Get Pattern 
                 return RedirectToAction("Index");
             }
             return View(entry);
