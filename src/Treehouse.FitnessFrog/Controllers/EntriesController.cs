@@ -57,6 +57,8 @@ namespace Treehouse.FitnessFrog.Controllers
             if (ModelState.IsValid)
             {
                 _entriesRepository.AddEntry(entry);
+
+                TempData["Message"] = "Your entry was successfully added.";
                 //Avoid duplicate submitions by redirect to Index Action  Post-Redirect-Get Pattern 
                 return RedirectToAction("Index");
             }
@@ -95,6 +97,7 @@ namespace Treehouse.FitnessFrog.Controllers
             {
                 _entriesRepository.UpdateEntry(entry);
 
+                TempData["Message"] = "Your entry was successfully edited";
                 return RedirectToAction("Index");
             }
             SetupActivitiesSelectListItems();
@@ -113,7 +116,6 @@ namespace Treehouse.FitnessFrog.Controllers
             {
                 return HttpNotFound();
             }
-            
             return View(entry);
         }
         [HttpPost]
@@ -122,6 +124,7 @@ namespace Treehouse.FitnessFrog.Controllers
         {
             _entriesRepository.DeleteEntry(id);
 
+            TempData["Message"] = "Your entry was successfully delited";
             return RedirectToAction("Index");
         }
         private void ValidateEntry(Entry entry)
