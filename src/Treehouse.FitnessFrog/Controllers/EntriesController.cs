@@ -122,7 +122,7 @@ namespace Treehouse.FitnessFrog.Controllers
         {
             _entriesRepository.DeleteEntry(id);
 
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
         private void ValidateEntry(Entry entry)
         {
